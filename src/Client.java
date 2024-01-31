@@ -24,13 +24,20 @@ public class Client {
         System.out.println("Connected to server.");
 
         JFrame jFrame = new JFrame("Client");
-        jFrame.setSize(400, 400);
+        jFrame.setSize(500, 500);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // An icon is a fixed size picture the image
         ImageIcon imageIcon = new ImageIcon("/Users/chanelmorgan/IdeaProjects/TCPServerClientSendingImages/about-image.png");
+        // Resize the image
+        Image originalImage = imageIcon.getImage();
+        int targetWidth = 200;  // Adjust as needed
+        int targetHeight = 200; // Adjust as needed
+        Image resizedImage = originalImage.getScaledInstance(targetWidth, targetHeight, Image.SCALE_SMOOTH);
+        ImageIcon resizedImageIcon = new ImageIcon(resizedImage);
 
-        JLabel jLabelPic = new JLabel(imageIcon);
+
+        JLabel jLabelPic = new JLabel(resizedImageIcon);
         JButton jButton = new JButton("Send image to Sever");
 
         jFrame.add(jLabelPic, BorderLayout.CENTER);
@@ -45,7 +52,7 @@ public class Client {
                     OutputStream outputStream = socket.getOutputStream();
                     BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
 
-                    Image image = imageIcon.getImage();
+                    Image image = resizedImageIcon.getImage();
                     BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null),
                             BufferedImage.TYPE_INT_RGB);
                     Graphics graphics = bufferedImage.getGraphics();
