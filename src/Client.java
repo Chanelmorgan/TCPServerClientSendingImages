@@ -28,7 +28,7 @@ public class Client {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // An icon is a fixed size picture the image
-        ImageIcon imageIcon = new ImageIcon("\\Users\\chanelmorgan\\IdeaProjects\\TCPServerClientSendingImages\\about-image.png");
+        ImageIcon imageIcon = new ImageIcon("/Users/chanelmorgan/IdeaProjects/TCPServerClientSendingImages/about-image.png");
 
         JLabel jLabelPic = new JLabel(imageIcon);
         JButton jButton = new JButton("Send image to Sever");
